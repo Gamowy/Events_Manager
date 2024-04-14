@@ -50,6 +50,20 @@
             };
         }
 
+        public bool titleTextBoxNotEmpty()
+        {
+            if (titleTextBox.Text == "")
+            {
+                errorProvider.SetError(titleTextBox, "Puste pole!");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(titleTextBox, "");
+                return true;
+            }
+        }
+
         public void setEventListSource(BindingSource eventList)
         {
             eventDataGrid.DataSource = eventList;

@@ -20,6 +20,7 @@ namespace EventManager.Views
         event EventHandler? RemoveEvent;
 
         // Methods
+        public bool titleTextBoxNotEmpty();
         void setEventListSource(BindingSource eventList);
     }
 }

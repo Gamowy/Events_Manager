@@ -46,10 +46,10 @@ namespace EventManager.Presenters
         // Event handlers
         private void _addEvent(object? sender, EventArgs e)
         {
-            bool parse1Success = Enum.TryParse<EventType>(_view.EventType, out EventType evType);
-            bool parse2Success = Enum.TryParse<EventPriority>(_view.EventPriority, out EventPriority evPriority);
+            bool parseEvTypeOk = Enum.TryParse<EventType>(_view.EventType, out EventType evType);
+            bool parseEvPriorityOk = Enum.TryParse<EventPriority>(_view.EventPriority, out EventPriority evPriority);
 
-            if (parse1Success && parse2Success) {
+            if (_view.titleTextBoxNotEmpty() && parseEvTypeOk && parseEvPriorityOk) {
                 EventRecord record = new EventRecord(_view.Title, _view.Description, _view.EventDate, evType, evPriority);
                 _eventRepository.add(record);
                 loadEventsList();

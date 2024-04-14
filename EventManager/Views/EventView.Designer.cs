@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             eventDetails = new GroupBox();
             evPriorityComboBox = new ComboBox();
             priorityLabel = new Label();
@@ -54,9 +55,11 @@
             pomocToolStripMenuItem = new ToolStripMenuItem();
             oProgramieToolStripMenuItem = new ToolStripMenuItem();
             eventDataGrid = new DataGridView();
+            errorProvider = new ErrorProvider(components);
             eventDetails.SuspendLayout();
             topMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)eventDataGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // eventDetails
@@ -288,6 +291,10 @@
             eventDataGrid.Size = new Size(576, 482);
             eventDataGrid.TabIndex = 8;
             // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
+            // 
             // EventView
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
@@ -310,6 +317,7 @@
             topMenu.ResumeLayout(false);
             topMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)eventDataGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -341,5 +349,6 @@
         private ToolStripMenuItem oProgramieToolStripMenuItem;
         private ComboBox evPriorityComboBox;
         private DataGridView eventDataGrid;
+        private ErrorProvider errorProvider;
     }
 }
