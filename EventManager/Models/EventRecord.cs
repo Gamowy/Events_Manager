@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EventManager.Models
+﻿namespace EventManager.Models
 {
     enum EventType { Work, Family, Entertaiment, Health, Sport }
-    enum Priority { Low, Medium, High }
+    enum EventPriority { High, Normal, Low }
 
     internal class EventRecord
     {
         string Title { get; set; }
         string? Description { get; set; }
-        DateTime Date { get; set; }
-        EventType Type { get; set; }
-        Priority Priority { get; set; }
+        DateTime? Date { get; set; }
+        EventType? Type { get; set; }
+        EventPriority? Priority { get; set; }
 
-        EventRecord(string title, string description, DateTime date, EventType type, Priority priority)
+        public EventRecord(string title, string? description, DateTime? date, EventType? type, EventPriority? priority)
         {
             Title = title;
             Description = description;
@@ -26,7 +20,7 @@ namespace EventManager.Models
             Priority = priority;
         }
 
-        EventRecord(EventRecord record)
+        public EventRecord(EventRecord record)
         {
             Title = record.Title;
             Description = record.Description;

@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            eventList = new ListBox();
             eventDetails = new GroupBox();
+            evPriorityComboBox = new ComboBox();
             priorityLabel = new Label();
             evTypeComboBox = new ComboBox();
             deleteButton = new Button();
             evTypeLabel = new Label();
-            addEventButton = new Button();
-            dateTimePicker1 = new DateTimePicker();
+            addButton = new Button();
+            dateTimePicker = new DateTimePicker();
             dateLabel = new Label();
             descLabel = new Label();
             titleTextBox = new TextBox();
@@ -56,28 +56,21 @@
             angielskiToolStripMenuItem = new ToolStripMenuItem();
             pomocToolStripMenuItem = new ToolStripMenuItem();
             oProgramieToolStripMenuItem = new ToolStripMenuItem();
-            priorityComboBox = new ComboBox();
+            eventDataGrid = new DataGridView();
             eventDetails.SuspendLayout();
             topMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)eventDataGrid).BeginInit();
             SuspendLayout();
-            // 
-            // eventList
-            // 
-            eventList.FormattingEnabled = true;
-            eventList.Location = new Point(392, 90);
-            eventList.Name = "eventList";
-            eventList.Size = new Size(472, 464);
-            eventList.TabIndex = 0;
             // 
             // eventDetails
             // 
-            eventDetails.Controls.Add(priorityComboBox);
+            eventDetails.Controls.Add(evPriorityComboBox);
             eventDetails.Controls.Add(priorityLabel);
             eventDetails.Controls.Add(evTypeComboBox);
             eventDetails.Controls.Add(deleteButton);
             eventDetails.Controls.Add(evTypeLabel);
-            eventDetails.Controls.Add(addEventButton);
-            eventDetails.Controls.Add(dateTimePicker1);
+            eventDetails.Controls.Add(addButton);
+            eventDetails.Controls.Add(dateTimePicker);
             eventDetails.Controls.Add(dateLabel);
             eventDetails.Controls.Add(descLabel);
             eventDetails.Controls.Add(titleTextBox);
@@ -89,6 +82,16 @@
             eventDetails.TabIndex = 1;
             eventDetails.TabStop = false;
             eventDetails.Text = "Wydarzenie";
+            // 
+            // evPriorityComboBox
+            // 
+            evPriorityComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            evPriorityComboBox.FormattingEnabled = true;
+            evPriorityComboBox.Items.AddRange(new object[] { "Wysoki", "Standardowy", "Niski" });
+            evPriorityComboBox.Location = new Point(6, 366);
+            evPriorityComboBox.Name = "evPriorityComboBox";
+            evPriorityComboBox.Size = new Size(324, 31);
+            evPriorityComboBox.TabIndex = 9;
             // 
             // priorityLabel
             // 
@@ -127,21 +130,21 @@
             evTypeLabel.TabIndex = 6;
             evTypeLabel.Text = "Typ wydarzenia";
             // 
-            // addEventButton
+            // addButton
             // 
-            addEventButton.Location = new Point(6, 448);
-            addEventButton.Name = "addEventButton";
-            addEventButton.Size = new Size(162, 56);
-            addEventButton.TabIndex = 2;
-            addEventButton.Text = "Dodaj";
-            addEventButton.UseVisualStyleBackColor = true;
+            addButton.Location = new Point(6, 448);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(162, 56);
+            addButton.TabIndex = 2;
+            addButton.Text = "Dodaj";
+            addButton.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
-            dateTimePicker1.Location = new Point(6, 247);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(324, 30);
-            dateTimePicker1.TabIndex = 5;
+            dateTimePicker.Location = new Point(6, 247);
+            dateTimePicker.Name = "dateTimePicker";
+            dateTimePicker.Size = new Size(324, 30);
+            dateTimePicker.TabIndex = 5;
             // 
             // dateLabel
             // 
@@ -294,26 +297,25 @@
             oProgramieToolStripMenuItem.Size = new Size(201, 30);
             oProgramieToolStripMenuItem.Text = "O programie";
             // 
-            // priorityComboBox
+            // eventDataGrid
             // 
-            priorityComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            priorityComboBox.FormattingEnabled = true;
-            priorityComboBox.Items.AddRange(new object[] { "Niski", "Średni", "Wysoki" });
-            priorityComboBox.Location = new Point(6, 366);
-            priorityComboBox.Name = "priorityComboBox";
-            priorityComboBox.Size = new Size(324, 31);
-            priorityComboBox.TabIndex = 9;
+            eventDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            eventDataGrid.Location = new Point(392, 78);
+            eventDataGrid.Name = "eventDataGrid";
+            eventDataGrid.RowHeadersWidth = 57;
+            eventDataGrid.Size = new Size(472, 482);
+            eventDataGrid.TabIndex = 8;
             // 
             // EventView
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(876, 574);
+            Controls.Add(eventDataGrid);
             Controls.Add(sortTypeComboBox);
             Controls.Add(sortByComboBox);
             Controls.Add(sortLabel);
             Controls.Add(eventDetails);
-            Controls.Add(eventList);
             Controls.Add(topMenu);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MainMenuStrip = topMenu;
@@ -325,15 +327,14 @@
             eventDetails.PerformLayout();
             topMenu.ResumeLayout(false);
             topMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)eventDataGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ListBox eventList;
         private GroupBox eventDetails;
-        private Button addEventButton;
+        private Button addButton;
         private Button deleteButton;
         private Label sortLabel;
         private ComboBox sortByComboBox;
@@ -343,7 +344,7 @@
         private Label descLabel;
         private RichTextBox descriptionTextBox;
         private Label dateLabel;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker;
         private Label priorityLabel;
         private ComboBox evTypeComboBox;
         private Label evTypeLabel;
@@ -359,6 +360,7 @@
         private ToolStripMenuItem angielskiToolStripMenuItem;
         private ToolStripMenuItem pomocToolStripMenuItem;
         private ToolStripMenuItem oProgramieToolStripMenuItem;
-        private ComboBox priorityComboBox;
+        private ComboBox evPriorityComboBox;
+        private DataGridView eventDataGrid;
     }
 }

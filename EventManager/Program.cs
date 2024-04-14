@@ -1,3 +1,5 @@
+using EventManager.Presenters;
+using EventManager.Repositories;
 using EventManager.Views;
 
 namespace EventManager
@@ -13,7 +15,11 @@ namespace EventManager
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new EventView());
+
+            IEventView eventView = new EventView();
+            EventRepository eventRepository = EventRepository.getInstance();
+            new EventPresenter(eventView, eventRepository);
+            Application.Run((Form)eventView);
         }
     }
 }
