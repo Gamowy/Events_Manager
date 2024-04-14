@@ -5,11 +5,11 @@
 
     internal class EventRecord
     {
-        string Title { get; set; }
-        string? Description { get; set; }
-        DateTime? Date { get; set; }
-        EventType? Type { get; set; }
-        EventPriority? Priority { get; set; }
+        public string Title { get; set; }
+        public string? Description { get; set; }
+        public DateTime? Date { get; set; }
+        public EventType? Type { get; set; }
+        public EventPriority? Priority { get; set; }
 
         public EventRecord(string title, string? description, DateTime? date, EventType? type, EventPriority? priority)
         {

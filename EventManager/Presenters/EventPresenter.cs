@@ -8,6 +8,7 @@ namespace EventManager.Presenters
     {
         private EventRepository _eventRepository;
         private IEventView _view;
+        private IEnumerable<EventRecord>? _eventList;
         private BindingSource _eventBindingSource;
 
         public EventPresenter(IEventView view, EventRepository reposiotry)
@@ -15,62 +16,45 @@ namespace EventManager.Presenters
             _view = view;
             _eventRepository = reposiotry;
             _eventBindingSource = new BindingSource();
+            
 
             _view.AddNewEvent += _addEvent;
             _view.RemoveEvent += _removeEvent;
             _view.setEventListSource(_eventBindingSource);
 
             loadEventsList();
+            clearForm();
         }
 
         // Methods
         private void loadEventsList()
-        { 
-            _eventBindingSource.DataSource = _eventRepository.getAll();
+        {
+            _eventList = _eventRepository.getAll();
+            _eventBindingSource.DataSource = _eventList;
+            _eventBindingSource.ResetBindings(false);
         }
 
-        private EventType? getEventType()
+        private void clearForm()
         {
-            switch (_view.EventType)
-            {
-                case "Praca":
-                    return EventType.Work;
-                case "Rodzina":
-                    return EventType.Family;
-                case "Rozrywka":
-                    return EventType.Entertaiment;
-                case "Zdrowie":
-                    return EventType.Health;
-                case "Sport":
-                    return EventType.Sport;
-                default:
-                    return null;
-            }
-        }
-        private EventPriority? getEventPriority()
-        {
-            switch (_view.EventPriority)
-            {
-                case "Wysoki":
-                    return EventPriority.High;
-                case "Standardowy":
-                    return EventPriority.Normal;
-                case "Niski":
-                    return EventPriority.Low;
-                default:
-                    return null;
-            }
+            _view.Title = "";
+            _view.Description = "";
+            _view.EventDate = DateTime.Now;
+            _view.EventType = "Work";
+            _view.EventPriority = "Normal";
         }
 
         // Event handlers
         private void _addEvent(object? sender, EventArgs e)
         {
-            EventType? evType = getEventType();
-            EventPriority? evPriority = getEventPriority();
+            bool parse1Success = Enum.TryParse<EventType>(_view.EventType, out EventType evType);
+            bool parse2Success = Enum.TryParse<EventPriority>(_view.EventPriority, out EventPriority evPriority);
 
-            EventRecord record = new EventRecord(_view.Title, _view.Description, _view.EventDate, evType, evPriority);
-            _eventRepository.add(record);
-            loadEventsList();
+            if (parse1Success && parse2Success) {
+                EventRecord record = new EventRecord(_view.Title, _view.Description, _view.EventDate, evType, evPriority);
+                _eventRepository.add(record);
+                loadEventsList();
+                clearForm();
+            }
         }
 
         private void _removeEvent(object? sender, EventArgs e)

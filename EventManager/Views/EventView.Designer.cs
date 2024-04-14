@@ -51,9 +51,6 @@
             edytujToolStripMenuItem = new ToolStripMenuItem();
             wyczyśćFormularzToolStripMenuItem = new ToolStripMenuItem();
             usuńDaneToolStripMenuItem = new ToolStripMenuItem();
-            zmieńJęzymToolStripMenuItem = new ToolStripMenuItem();
-            polskiToolStripMenuItem = new ToolStripMenuItem();
-            angielskiToolStripMenuItem = new ToolStripMenuItem();
             pomocToolStripMenuItem = new ToolStripMenuItem();
             oProgramieToolStripMenuItem = new ToolStripMenuItem();
             eventDataGrid = new DataGridView();
@@ -81,13 +78,13 @@
             eventDetails.Size = new Size(352, 510);
             eventDetails.TabIndex = 1;
             eventDetails.TabStop = false;
-            eventDetails.Text = "Wydarzenie";
+            eventDetails.Text = "Event";
             // 
             // evPriorityComboBox
             // 
             evPriorityComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             evPriorityComboBox.FormattingEnabled = true;
-            evPriorityComboBox.Items.AddRange(new object[] { "Wysoki", "Standardowy", "Niski" });
+            evPriorityComboBox.Items.AddRange(new object[] { "High", "Normal", "Low" });
             evPriorityComboBox.Location = new Point(6, 366);
             evPriorityComboBox.Name = "evPriorityComboBox";
             evPriorityComboBox.Size = new Size(324, 31);
@@ -98,15 +95,15 @@
             priorityLabel.AutoSize = true;
             priorityLabel.Location = new Point(6, 340);
             priorityLabel.Name = "priorityLabel";
-            priorityLabel.Size = new Size(75, 23);
+            priorityLabel.Size = new Size(111, 23);
             priorityLabel.TabIndex = 8;
-            priorityLabel.Text = "Priorytet";
+            priorityLabel.Text = "Event priority";
             // 
             // evTypeComboBox
             // 
             evTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             evTypeComboBox.FormattingEnabled = true;
-            evTypeComboBox.Items.AddRange(new object[] { "Praca", "Rodzina", "Rozrywka", "Zdrowie", "Sport" });
+            evTypeComboBox.Items.AddRange(new object[] { "Work", "Family", "Entertaiment", "Health", "Sport" });
             evTypeComboBox.Location = new Point(6, 306);
             evTypeComboBox.Name = "evTypeComboBox";
             evTypeComboBox.Size = new Size(324, 31);
@@ -118,7 +115,7 @@
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(162, 56);
             deleteButton.TabIndex = 3;
-            deleteButton.Text = "Usuń";
+            deleteButton.Text = "Delete event";
             deleteButton.UseVisualStyleBackColor = true;
             // 
             // evTypeLabel
@@ -126,9 +123,9 @@
             evTypeLabel.AutoSize = true;
             evTypeLabel.Location = new Point(6, 280);
             evTypeLabel.Name = "evTypeLabel";
-            evTypeLabel.Size = new Size(126, 23);
+            evTypeLabel.Size = new Size(90, 23);
             evTypeLabel.TabIndex = 6;
-            evTypeLabel.Text = "Typ wydarzenia";
+            evTypeLabel.Text = "Event type";
             // 
             // addButton
             // 
@@ -136,7 +133,7 @@
             addButton.Name = "addButton";
             addButton.Size = new Size(162, 56);
             addButton.TabIndex = 2;
-            addButton.Text = "Dodaj";
+            addButton.Text = "Add event";
             addButton.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker
@@ -153,16 +150,16 @@
             dateLabel.Name = "dateLabel";
             dateLabel.Size = new Size(46, 23);
             dateLabel.TabIndex = 4;
-            dateLabel.Text = "Data";
+            dateLabel.Text = "Date";
             // 
             // descLabel
             // 
             descLabel.AutoSize = true;
             descLabel.Location = new Point(6, 95);
             descLabel.Name = "descLabel";
-            descLabel.Size = new Size(44, 23);
+            descLabel.Size = new Size(96, 23);
             descLabel.TabIndex = 2;
-            descLabel.Text = "Opis";
+            descLabel.Text = "Description";
             // 
             // titleTextBox
             // 
@@ -184,25 +181,25 @@
             titleLabel.AutoSize = true;
             titleLabel.Location = new Point(6, 36);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(47, 23);
+            titleLabel.Size = new Size(42, 23);
             titleLabel.TabIndex = 0;
-            titleLabel.Text = "Tytuł";
+            titleLabel.Text = "Title";
             // 
             // sortLabel
             // 
             sortLabel.AutoSize = true;
-            sortLabel.Location = new Point(392, 44);
+            sortLabel.Location = new Point(388, 44);
             sortLabel.Name = "sortLabel";
-            sortLabel.Size = new Size(120, 23);
+            sortLabel.Size = new Size(68, 23);
             sortLabel.TabIndex = 4;
-            sortLabel.Text = "Sortuj według:";
+            sortLabel.Text = "Sort by:";
             // 
             // sortByComboBox
             // 
             sortByComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             sortByComboBox.FormattingEnabled = true;
-            sortByComboBox.Items.AddRange(new object[] { "Daty", "Priorytetu", "Typu" });
-            sortByComboBox.Location = new Point(518, 41);
+            sortByComboBox.Items.AddRange(new object[] { "Date", "Priority", "Type" });
+            sortByComboBox.Location = new Point(454, 41);
             sortByComboBox.Name = "sortByComboBox";
             sortByComboBox.Size = new Size(149, 31);
             sortByComboBox.TabIndex = 5;
@@ -211,8 +208,8 @@
             // 
             sortTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             sortTypeComboBox.FormattingEnabled = true;
-            sortTypeComboBox.Items.AddRange(new object[] { "Rosnąco", "Malejąco" });
-            sortTypeComboBox.Location = new Point(673, 41);
+            sortTypeComboBox.Items.AddRange(new object[] { "Ascending", "Descending" });
+            sortTypeComboBox.Location = new Point(609, 41);
             sortTypeComboBox.Name = "sortTypeComboBox";
             sortTypeComboBox.Size = new Size(149, 31);
             sortTypeComboBox.TabIndex = 6;
@@ -223,7 +220,7 @@
             topMenu.Items.AddRange(new ToolStripItem[] { plikToolStripMenuItem, edytujToolStripMenuItem, pomocToolStripMenuItem });
             topMenu.Location = new Point(0, 0);
             topMenu.Name = "topMenu";
-            topMenu.Size = new Size(876, 31);
+            topMenu.Size = new Size(976, 31);
             topMenu.TabIndex = 7;
             topMenu.Text = "menuStrip1";
             // 
@@ -231,86 +228,71 @@
             // 
             plikToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { zapiszToolStripMenuItem, wczytajToolStripMenuItem });
             plikToolStripMenuItem.Name = "plikToolStripMenuItem";
-            plikToolStripMenuItem.Size = new Size(52, 27);
-            plikToolStripMenuItem.Text = "Plik";
+            plikToolStripMenuItem.Size = new Size(51, 27);
+            plikToolStripMenuItem.Text = "File";
             // 
             // zapiszToolStripMenuItem
             // 
             zapiszToolStripMenuItem.Name = "zapiszToolStripMenuItem";
-            zapiszToolStripMenuItem.Size = new Size(162, 30);
-            zapiszToolStripMenuItem.Text = "Zapisz";
+            zapiszToolStripMenuItem.Size = new Size(168, 30);
+            zapiszToolStripMenuItem.Text = "Save file";
             // 
             // wczytajToolStripMenuItem
             // 
             wczytajToolStripMenuItem.Name = "wczytajToolStripMenuItem";
-            wczytajToolStripMenuItem.Size = new Size(162, 30);
-            wczytajToolStripMenuItem.Text = "Wczytaj";
+            wczytajToolStripMenuItem.Size = new Size(168, 30);
+            wczytajToolStripMenuItem.Text = "Load file";
             // 
             // edytujToolStripMenuItem
             // 
-            edytujToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { wyczyśćFormularzToolStripMenuItem, usuńDaneToolStripMenuItem, zmieńJęzymToolStripMenuItem });
+            edytujToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { wyczyśćFormularzToolStripMenuItem, usuńDaneToolStripMenuItem });
             edytujToolStripMenuItem.Name = "edytujToolStripMenuItem";
-            edytujToolStripMenuItem.Size = new Size(73, 27);
-            edytujToolStripMenuItem.Text = "Edytuj";
+            edytujToolStripMenuItem.Size = new Size(55, 27);
+            edytujToolStripMenuItem.Text = "Edit";
             // 
             // wyczyśćFormularzToolStripMenuItem
             // 
             wyczyśćFormularzToolStripMenuItem.Name = "wyczyśćFormularzToolStripMenuItem";
-            wyczyśćFormularzToolStripMenuItem.Size = new Size(245, 30);
-            wyczyśćFormularzToolStripMenuItem.Text = "Wyczyść formularz";
+            wyczyśćFormularzToolStripMenuItem.Size = new Size(192, 30);
+            wyczyśćFormularzToolStripMenuItem.Text = "Clear form";
             // 
             // usuńDaneToolStripMenuItem
             // 
             usuńDaneToolStripMenuItem.Name = "usuńDaneToolStripMenuItem";
-            usuńDaneToolStripMenuItem.Size = new Size(245, 30);
-            usuńDaneToolStripMenuItem.Text = "Usuń dane";
-            // 
-            // zmieńJęzymToolStripMenuItem
-            // 
-            zmieńJęzymToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { polskiToolStripMenuItem, angielskiToolStripMenuItem });
-            zmieńJęzymToolStripMenuItem.Name = "zmieńJęzymToolStripMenuItem";
-            zmieńJęzymToolStripMenuItem.Size = new Size(245, 30);
-            zmieńJęzymToolStripMenuItem.Text = "Zmień język";
-            // 
-            // polskiToolStripMenuItem
-            // 
-            polskiToolStripMenuItem.Name = "polskiToolStripMenuItem";
-            polskiToolStripMenuItem.Size = new Size(171, 30);
-            polskiToolStripMenuItem.Text = "Polski";
-            // 
-            // angielskiToolStripMenuItem
-            // 
-            angielskiToolStripMenuItem.Name = "angielskiToolStripMenuItem";
-            angielskiToolStripMenuItem.Size = new Size(171, 30);
-            angielskiToolStripMenuItem.Text = "Angielski";
+            usuńDaneToolStripMenuItem.Size = new Size(192, 30);
+            usuńDaneToolStripMenuItem.Text = "Delete data";
             // 
             // pomocToolStripMenuItem
             // 
             pomocToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { oProgramieToolStripMenuItem });
             pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            pomocToolStripMenuItem.Size = new Size(78, 27);
-            pomocToolStripMenuItem.Text = "Pomoc";
+            pomocToolStripMenuItem.Size = new Size(61, 27);
+            pomocToolStripMenuItem.Text = "Help";
             // 
             // oProgramieToolStripMenuItem
             // 
             oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
-            oProgramieToolStripMenuItem.Size = new Size(201, 30);
-            oProgramieToolStripMenuItem.Text = "O programie";
+            oProgramieToolStripMenuItem.Size = new Size(151, 30);
+            oProgramieToolStripMenuItem.Text = "About";
             // 
             // eventDataGrid
             // 
+            eventDataGrid.AllowUserToResizeColumns = false;
+            eventDataGrid.AllowUserToResizeRows = false;
+            eventDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             eventDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            eventDataGrid.Location = new Point(392, 78);
+            eventDataGrid.Location = new Point(388, 78);
             eventDataGrid.Name = "eventDataGrid";
+            eventDataGrid.RowHeadersVisible = false;
             eventDataGrid.RowHeadersWidth = 57;
-            eventDataGrid.Size = new Size(472, 482);
+            eventDataGrid.Size = new Size(576, 482);
             eventDataGrid.TabIndex = 8;
             // 
             // EventView
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(876, 574);
+            ClientSize = new Size(976, 574);
             Controls.Add(eventDataGrid);
             Controls.Add(sortTypeComboBox);
             Controls.Add(sortByComboBox);
@@ -320,9 +302,9 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MainMenuStrip = topMenu;
             MaximizeBox = false;
-            MaximumSize = new Size(900, 630);
+            MaximumSize = new Size(1000, 630);
             Name = "EventView";
-            Text = "Administrator wydarzeń";
+            Text = "Events manager";
             eventDetails.ResumeLayout(false);
             eventDetails.PerformLayout();
             topMenu.ResumeLayout(false);
@@ -355,9 +337,6 @@
         private ToolStripMenuItem edytujToolStripMenuItem;
         private ToolStripMenuItem wyczyśćFormularzToolStripMenuItem;
         private ToolStripMenuItem usuńDaneToolStripMenuItem;
-        private ToolStripMenuItem zmieńJęzymToolStripMenuItem;
-        private ToolStripMenuItem polskiToolStripMenuItem;
-        private ToolStripMenuItem angielskiToolStripMenuItem;
         private ToolStripMenuItem pomocToolStripMenuItem;
         private ToolStripMenuItem oProgramieToolStripMenuItem;
         private ComboBox evPriorityComboBox;
