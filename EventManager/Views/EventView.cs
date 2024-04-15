@@ -10,9 +10,9 @@
 
         // Properties
         public string Title { get => titleTextBox.Text; set => titleTextBox.Text = value; }
-        public string Description { get => descriptionTextBox.Text; set => descriptionTextBox.Text = value; }
+        public string? Description { get => descriptionTextBox.Text; set => descriptionTextBox.Text = value; }
         public DateTime EventDate { get => dateTimePicker.Value; set => dateTimePicker.Value = value; }
-        public string EventType
+        public string? EventType
         {
             get => evTypeComboBox.Text;
             set
@@ -22,7 +22,7 @@
                     evTypeComboBox.SelectedIndex = index;
             }
         }
-        public string EventPriority
+        public string? EventPriority
         {
             get => evPriorityComboBox.Text;
             set
@@ -37,6 +37,7 @@
         public event EventHandler? AddNewEvent;
         public event EventHandler? RemoveEvent;
 
+
         // Methods
         private void assignEvents()
         {
@@ -48,7 +49,21 @@
             {
                 RemoveEvent?.Invoke(this, EventArgs.Empty);
             };
+            eventDataGrid.SelectionChanged += _displaySelectedEvent;
         }
+
+        private void _displaySelectedEvent(object? sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in eventDataGrid.SelectedRows)
+            {
+                Title = row.Cells[0].Value.ToString() ?? "Event";
+                Description = row.Cells[1].Value.ToString();
+                EventDate = (DateTime)row.Cells[2].Value;
+                EventType = row.Cells[3].Value.ToString();
+                EventPriority = row.Cells[4].Value.ToString();
+            }
+        }
+
 
         public bool titleTextBoxNotEmpty()
         {

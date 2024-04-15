@@ -7,11 +7,11 @@
     {
         public string Title { get; set; }
         public string? Description { get; set; }
-        public DateTime? Date { get; set; }
-        public EventType? Type { get; set; }
-        public EventPriority? Priority { get; set; }
+        public DateTime Date { get; set; }
+        public EventType Type { get; set; }
+        public EventPriority Priority { get; set; }
 
-        public EventRecord(string title, string? description, DateTime? date, EventType? type, EventPriority? priority)
+        public EventRecord(string title, string? description, DateTime date, EventType type, EventPriority priority)
         {
             Title = title;
             Description = description;

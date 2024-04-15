@@ -10,10 +10,10 @@ namespace EventManager.Views
     {
         // Properties
         string Title { get; set; }
-        string Description { get; set; }
+        string? Description { get; set; }
         DateTime EventDate { get; set; }
-        string EventType { get; set; }
-        string EventPriority { get; set; }
+        string? EventType { get; set; }
+        string? EventPriority { get; set; }
 
         // Events
         event EventHandler? AddNewEvent;

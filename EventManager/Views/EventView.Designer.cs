@@ -223,7 +223,7 @@
             topMenu.Items.AddRange(new ToolStripItem[] { plikToolStripMenuItem, edytujToolStripMenuItem, pomocToolStripMenuItem });
             topMenu.Location = new Point(0, 0);
             topMenu.Name = "topMenu";
-            topMenu.Size = new Size(976, 31);
+            topMenu.Size = new Size(1176, 31);
             topMenu.TabIndex = 7;
             topMenu.Text = "menuStrip1";
             // 
@@ -286,9 +286,9 @@
             eventDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             eventDataGrid.Location = new Point(388, 78);
             eventDataGrid.Name = "eventDataGrid";
-            eventDataGrid.RowHeadersVisible = false;
             eventDataGrid.RowHeadersWidth = 57;
-            eventDataGrid.Size = new Size(576, 482);
+            eventDataGrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            eventDataGrid.Size = new Size(776, 482);
             eventDataGrid.TabIndex = 8;
             // 
             // errorProvider
@@ -299,7 +299,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(976, 574);
+            ClientSize = new Size(1176, 574);
             Controls.Add(eventDataGrid);
             Controls.Add(sortTypeComboBox);
             Controls.Add(sortByComboBox);
@@ -309,7 +309,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MainMenuStrip = topMenu;
             MaximizeBox = false;
-            MaximumSize = new Size(1000, 630);
+            MaximumSize = new Size(1200, 630);
             Name = "EventView";
             Text = "Events manager";
             eventDetails.ResumeLayout(false);

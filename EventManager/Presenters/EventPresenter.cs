@@ -61,5 +61,10 @@ namespace EventManager.Presenters
         {
 
         }
+
+        private void _selectEvent(object? sender, EventArgs e)
+        {
+            
+        }
     }
 }
