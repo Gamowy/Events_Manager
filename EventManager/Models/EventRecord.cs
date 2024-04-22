@@ -3,7 +3,7 @@
     enum EventType { Work, Family, Entertaiment, Health, Sport }
     enum EventPriority { High, Normal, Low }
 
-    internal class EventRecord
+    internal class EventRecord : IEquatable<EventRecord>
     {
         public string Title { get; set; }
         public string? Description { get; set; }
@@ -27,6 +27,16 @@
             Date = record.Date;
             Type = record.Type;
             Priority = record.Priority;
+        }
+
+        public bool Equals(EventRecord? other)
+        {
+            if (other is not null)
+            {
+                if (this.Title.Equals(other.Title) && this.Date.Equals(other.Date) && this.Type.Equals(other.Type) && this.Priority.Equals(other.Priority))
+                    return true;
+            }
+            return false;
         }
     }
 }

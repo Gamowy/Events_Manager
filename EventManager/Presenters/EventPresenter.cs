@@ -34,6 +34,19 @@ namespace EventManager.Presenters
             _eventBindingSource.ResetBindings(false);
         }
 
+        private EventRecord? readRecordFromForm()
+        {
+            bool parseEvTypeOk = Enum.TryParse<EventType>(_view.EventType, out EventType evType);
+            bool parseEvPriorityOk = Enum.TryParse<EventPriority>(_view.EventPriority, out EventPriority evPriority);
+
+            if (_view.titleTextBoxNotEmpty() && parseEvTypeOk && parseEvPriorityOk)
+            {
+                EventRecord formRecord = new EventRecord(_view.Title, _view.Description, _view.EventDate, evType, evPriority);
+                return formRecord;
+            }
+            return null;
+        }
+
         private void clearForm()
         {
             _view.Title = "";
@@ -46,11 +59,9 @@ namespace EventManager.Presenters
         // Event handlers
         private void _addEvent(object? sender, EventArgs e)
         {
-            bool parseEvTypeOk = Enum.TryParse<EventType>(_view.EventType, out EventType evType);
-            bool parseEvPriorityOk = Enum.TryParse<EventPriority>(_view.EventPriority, out EventPriority evPriority);
-
-            if (_view.titleTextBoxNotEmpty() && parseEvTypeOk && parseEvPriorityOk) {
-                EventRecord record = new EventRecord(_view.Title, _view.Description, _view.EventDate, evType, evPriority);
+            EventRecord? record = readRecordFromForm();
+            if (record is not null)
+            {
                 _eventRepository.add(record);
                 loadEventsList();
                 clearForm();
@@ -59,12 +70,15 @@ namespace EventManager.Presenters
 
         private void _removeEvent(object? sender, EventArgs e)
         {
-
-        }
-
-        private void _selectEvent(object? sender, EventArgs e)
-        {
-            
+            EventRecord? record = readRecordFromForm();
+            if (record is not null)
+            {
+                if (_eventRepository.remove(record))
+                {
+                    loadEventsList();
+                    clearForm();
+                }
+            }
         }
     }
 }

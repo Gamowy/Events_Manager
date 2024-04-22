@@ -30,5 +30,18 @@ namespace EventManager.Repositories
         {
             eventsDataBase.Add(record);
         }
+
+        public bool remove(EventRecord record)
+        {
+            foreach (EventRecord ev in eventsDataBase)
+            {
+                if (ev.Equals(record))
+                {
+                    eventsDataBase.Remove(ev);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
