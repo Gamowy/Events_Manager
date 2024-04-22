@@ -18,9 +18,11 @@ namespace EventManager.Views
         // Events
         event EventHandler? AddNewEvent;
         event EventHandler? RemoveEvent;
+        event EventHandler? RemoveAllEvents;
 
         // Methods
         public bool titleTextBoxNotEmpty();
+        public void clearForm();
         void setEventListSource(BindingSource eventList);
     }
 }

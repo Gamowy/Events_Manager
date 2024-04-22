@@ -50,8 +50,8 @@
             zapiszToolStripMenuItem = new ToolStripMenuItem();
             wczytajToolStripMenuItem = new ToolStripMenuItem();
             edytujToolStripMenuItem = new ToolStripMenuItem();
-            wyczyśćFormularzToolStripMenuItem = new ToolStripMenuItem();
-            usuńDaneToolStripMenuItem = new ToolStripMenuItem();
+            clearFormToolStripMenuItem = new ToolStripMenuItem();
+            deleteDataToolStripMenuItem = new ToolStripMenuItem();
             pomocToolStripMenuItem = new ToolStripMenuItem();
             oProgramieToolStripMenuItem = new ToolStripMenuItem();
             eventDataGrid = new DataGridView();
@@ -248,22 +248,22 @@
             // 
             // edytujToolStripMenuItem
             // 
-            edytujToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { wyczyśćFormularzToolStripMenuItem, usuńDaneToolStripMenuItem });
+            edytujToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clearFormToolStripMenuItem, deleteDataToolStripMenuItem });
             edytujToolStripMenuItem.Name = "edytujToolStripMenuItem";
             edytujToolStripMenuItem.Size = new Size(55, 27);
             edytujToolStripMenuItem.Text = "Edit";
             // 
-            // wyczyśćFormularzToolStripMenuItem
+            // clearFormToolStripMenuItem
             // 
-            wyczyśćFormularzToolStripMenuItem.Name = "wyczyśćFormularzToolStripMenuItem";
-            wyczyśćFormularzToolStripMenuItem.Size = new Size(192, 30);
-            wyczyśćFormularzToolStripMenuItem.Text = "Clear form";
+            clearFormToolStripMenuItem.Name = "clearFormToolStripMenuItem";
+            clearFormToolStripMenuItem.Size = new Size(252, 30);
+            clearFormToolStripMenuItem.Text = "Clear form";
             // 
-            // usuńDaneToolStripMenuItem
+            // deleteDataToolStripMenuItem
             // 
-            usuńDaneToolStripMenuItem.Name = "usuńDaneToolStripMenuItem";
-            usuńDaneToolStripMenuItem.Size = new Size(192, 30);
-            usuńDaneToolStripMenuItem.Text = "Delete data";
+            deleteDataToolStripMenuItem.Name = "deleteDataToolStripMenuItem";
+            deleteDataToolStripMenuItem.Size = new Size(252, 30);
+            deleteDataToolStripMenuItem.Text = "Delete data";
             // 
             // pomocToolStripMenuItem
             // 
@@ -297,6 +297,7 @@
             // 
             // EventView
             // 
+            AcceptButton = addButton;
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1176, 574);
@@ -343,8 +344,8 @@
         private ToolStripMenuItem zapiszToolStripMenuItem;
         private ToolStripMenuItem wczytajToolStripMenuItem;
         private ToolStripMenuItem edytujToolStripMenuItem;
-        private ToolStripMenuItem wyczyśćFormularzToolStripMenuItem;
-        private ToolStripMenuItem usuńDaneToolStripMenuItem;
+        private ToolStripMenuItem clearFormToolStripMenuItem;
+        private ToolStripMenuItem deleteDataToolStripMenuItem;
         private ToolStripMenuItem pomocToolStripMenuItem;
         private ToolStripMenuItem oProgramieToolStripMenuItem;
         private ComboBox evPriorityComboBox;

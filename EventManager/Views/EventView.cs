@@ -1,4 +1,6 @@
-﻿namespace EventManager.Views
+﻿using System.Windows.Forms;
+
+namespace EventManager.Views
 {
     public partial class EventView : Form, IEventView
     {
@@ -36,7 +38,8 @@
         // Events
         public event EventHandler? AddNewEvent;
         public event EventHandler? RemoveEvent;
-
+        public event EventHandler? ClearFormEvent;
+        public event EventHandler? RemoveAllEvents;
 
         // Methods
         private void assignEvents()
@@ -49,7 +52,12 @@
             {
                 RemoveEvent?.Invoke(this, EventArgs.Empty);
             };
+            deleteDataToolStripMenuItem.Click += (sender, e) =>
+            {
+                RemoveAllEvents?.Invoke(this, EventArgs.Empty);
+            };
             eventDataGrid.SelectionChanged += _displaySelectedEvent;
+            clearFormToolStripMenuItem.Click += _clearFormEvent;
         }
 
         private void _displaySelectedEvent(object? sender, EventArgs e)
@@ -64,6 +72,19 @@
             }
         }
 
+        private void _clearFormEvent(object? sender, EventArgs e)
+        {
+            clearForm();
+        }
+
+        public void clearForm()
+        {
+            Title = "";
+            Description = "";
+            EventDate = DateTime.Now;
+            EventType = "Work";
+            EventPriority = "Normal";
+        }   
 
         public bool titleTextBoxNotEmpty()
         {

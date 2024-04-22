@@ -26,6 +26,11 @@ namespace EventManager.Repositories
             return eventsDataBase;
         }
 
+        public void RemoveAll()
+        {
+            eventsDataBase.Clear();
+        }
+
         public void add(EventRecord record)
         {
             eventsDataBase.Add(record);

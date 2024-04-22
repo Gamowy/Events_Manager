@@ -20,10 +20,11 @@ namespace EventManager.Presenters
 
             _view.AddNewEvent += _addEvent;
             _view.RemoveEvent += _removeEvent;
+            _view.RemoveAllEvents += _removeAllEvents;
             _view.setEventListSource(_eventBindingSource);
 
             loadEventsList();
-            clearForm();
+            _view.clearForm();
         }
 
         // Methods
@@ -47,15 +48,6 @@ namespace EventManager.Presenters
             return null;
         }
 
-        private void clearForm()
-        {
-            _view.Title = "";
-            _view.Description = "";
-            _view.EventDate = DateTime.Now;
-            _view.EventType = "Work";
-            _view.EventPriority = "Normal";
-        }
-
         // Event handlers
         private void _addEvent(object? sender, EventArgs e)
         {
@@ -64,7 +56,7 @@ namespace EventManager.Presenters
             {
                 _eventRepository.add(record);
                 loadEventsList();
-                clearForm();
+                _view.clearForm();
             }
         }
 
@@ -76,9 +68,15 @@ namespace EventManager.Presenters
                 if (_eventRepository.remove(record))
                 {
                     loadEventsList();
-                    clearForm();
+                    _view.clearForm();
                 }
             }
+        }
+
+        private void _removeAllEvents(object? sender, EventArgs e)
+        {
+            _eventRepository.RemoveAll();
+            loadEventsList();
         }
     }
 }
