@@ -47,13 +47,13 @@
             sortTypeComboBox = new ComboBox();
             topMenu = new MenuStrip();
             plikToolStripMenuItem = new ToolStripMenuItem();
-            zapiszToolStripMenuItem = new ToolStripMenuItem();
-            wczytajToolStripMenuItem = new ToolStripMenuItem();
+            saveFileToolStripMenuItem = new ToolStripMenuItem();
+            loadFileToolStripMenuItem = new ToolStripMenuItem();
             edytujToolStripMenuItem = new ToolStripMenuItem();
             clearFormToolStripMenuItem = new ToolStripMenuItem();
             deleteDataToolStripMenuItem = new ToolStripMenuItem();
             pomocToolStripMenuItem = new ToolStripMenuItem();
-            oProgramieToolStripMenuItem = new ToolStripMenuItem();
+            aboutToolStripMenuItem = new ToolStripMenuItem();
             eventDataGrid = new DataGridView();
             errorProvider = new ErrorProvider(components);
             eventDetails.SuspendLayout();
@@ -229,22 +229,22 @@
             // 
             // plikToolStripMenuItem
             // 
-            plikToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { zapiszToolStripMenuItem, wczytajToolStripMenuItem });
+            plikToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { saveFileToolStripMenuItem, loadFileToolStripMenuItem });
             plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             plikToolStripMenuItem.Size = new Size(51, 27);
             plikToolStripMenuItem.Text = "File";
             // 
-            // zapiszToolStripMenuItem
+            // saveFileToolStripMenuItem
             // 
-            zapiszToolStripMenuItem.Name = "zapiszToolStripMenuItem";
-            zapiszToolStripMenuItem.Size = new Size(168, 30);
-            zapiszToolStripMenuItem.Text = "Save file";
+            saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
+            saveFileToolStripMenuItem.Size = new Size(252, 30);
+            saveFileToolStripMenuItem.Text = "Save file";
             // 
-            // wczytajToolStripMenuItem
+            // loadFileToolStripMenuItem
             // 
-            wczytajToolStripMenuItem.Name = "wczytajToolStripMenuItem";
-            wczytajToolStripMenuItem.Size = new Size(168, 30);
-            wczytajToolStripMenuItem.Text = "Load file";
+            loadFileToolStripMenuItem.Name = "loadFileToolStripMenuItem";
+            loadFileToolStripMenuItem.Size = new Size(252, 30);
+            loadFileToolStripMenuItem.Text = "Load file";
             // 
             // edytujToolStripMenuItem
             // 
@@ -256,27 +256,27 @@
             // clearFormToolStripMenuItem
             // 
             clearFormToolStripMenuItem.Name = "clearFormToolStripMenuItem";
-            clearFormToolStripMenuItem.Size = new Size(252, 30);
+            clearFormToolStripMenuItem.Size = new Size(192, 30);
             clearFormToolStripMenuItem.Text = "Clear form";
             // 
             // deleteDataToolStripMenuItem
             // 
             deleteDataToolStripMenuItem.Name = "deleteDataToolStripMenuItem";
-            deleteDataToolStripMenuItem.Size = new Size(252, 30);
+            deleteDataToolStripMenuItem.Size = new Size(192, 30);
             deleteDataToolStripMenuItem.Text = "Delete data";
             // 
             // pomocToolStripMenuItem
             // 
-            pomocToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { oProgramieToolStripMenuItem });
+            pomocToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
             pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
             pomocToolStripMenuItem.Size = new Size(61, 27);
             pomocToolStripMenuItem.Text = "Help";
             // 
-            // oProgramieToolStripMenuItem
+            // aboutToolStripMenuItem
             // 
-            oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
-            oProgramieToolStripMenuItem.Size = new Size(151, 30);
-            oProgramieToolStripMenuItem.Text = "About";
+            aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            aboutToolStripMenuItem.Size = new Size(151, 30);
+            aboutToolStripMenuItem.Text = "About";
             // 
             // eventDataGrid
             // 
@@ -341,13 +341,13 @@
         private Label evTypeLabel;
         private MenuStrip topMenu;
         private ToolStripMenuItem plikToolStripMenuItem;
-        private ToolStripMenuItem zapiszToolStripMenuItem;
-        private ToolStripMenuItem wczytajToolStripMenuItem;
+        private ToolStripMenuItem saveFileToolStripMenuItem;
+        private ToolStripMenuItem loadFileToolStripMenuItem;
         private ToolStripMenuItem edytujToolStripMenuItem;
         private ToolStripMenuItem clearFormToolStripMenuItem;
         private ToolStripMenuItem deleteDataToolStripMenuItem;
         private ToolStripMenuItem pomocToolStripMenuItem;
-        private ToolStripMenuItem oProgramieToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem;
         private ComboBox evPriorityComboBox;
         private DataGridView eventDataGrid;
         private ErrorProvider errorProvider;

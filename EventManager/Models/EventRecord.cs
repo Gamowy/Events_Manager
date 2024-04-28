@@ -1,15 +1,23 @@
 ﻿namespace EventManager.Models
 {
-    enum EventType { Work, Family, Entertaiment, Health, Sport }
-    enum EventPriority { High, Normal, Low }
+    public enum EventType { Work, Family, Entertaiment, Health, Sport }
+    public enum EventPriority { High, Normal, Low }
 
-    internal class EventRecord : IEquatable<EventRecord>
+    public class EventRecord : IEquatable<EventRecord>
     {
         public string Title { get; set; }
         public string? Description { get; set; }
         public DateTime Date { get; set; }
         public EventType Type { get; set; }
         public EventPriority Priority { get; set; }
+
+        // Constructor used for serialization
+        private EventRecord() {
+            Title = "EventTitle";
+            Date = DateTime.Now;
+            Type = EventType.Work;
+            Priority = EventPriority.Normal;
+        }
 
         public EventRecord(string title, string? description, DateTime date, EventType type, EventPriority priority)
         {

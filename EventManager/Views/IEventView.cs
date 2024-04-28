@@ -18,7 +18,9 @@ namespace EventManager.Views
         // Events
         event EventHandler? AddNewEvent;
         event EventHandler? RemoveEvent;
-        event EventHandler? RemoveAllEvents;
+        event EventHandler? RemoveAllEvent;
+        event EventHandler? SaveFileEvent;
+        event EventHandler? LoadFileEvent;
 
         // Methods
         public bool titleTextBoxNotEmpty();

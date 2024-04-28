@@ -20,7 +20,9 @@ namespace EventManager.Presenters
 
             _view.AddNewEvent += _addEvent;
             _view.RemoveEvent += _removeEvent;
-            _view.RemoveAllEvents += _removeAllEvents;
+            _view.RemoveAllEvent += _removeAllEvent;
+            _view.SaveFileEvent += _saveFileEvent;
+            _view.LoadFileEvent += _loadFileEvent;
             _view.setEventListSource(_eventBindingSource);
 
             loadEventsList();
@@ -73,10 +75,31 @@ namespace EventManager.Presenters
             }
         }
 
-        private void _removeAllEvents(object? sender, EventArgs e)
+        private void _removeAllEvent(object? sender, EventArgs e)
         {
             _eventRepository.RemoveAll();
             loadEventsList();
+        }
+
+        private void _saveFileEvent(object? sender, EventArgs e)
+        {
+            if(!_eventRepository.saveToFile())
+            {
+                MessageBox.Show("Nie udało się zapisać pliku!", "Błąd zapisu!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+        private void _loadFileEvent(object? sender, EventArgs e)
+        {
+            if(!_eventRepository.loadFromFile())
+            {
+                MessageBox.Show("Nie udało się odczytać pliku!", "Błąd odczytu!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                loadEventsList();
+                _view.clearForm();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EventManager.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace EventManager.Repositories
 {
@@ -43,6 +44,57 @@ namespace EventManager.Repositories
                 if (ev.Equals(record))
                 {
                     eventsDataBase.Remove(ev);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool saveToFile()
+        {
+            string filePath = string.Empty;
+            if (eventsDataBase is not null)
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Xml files (*.xml)|*.xml|All files (*.*)|*.*";
+                    saveFileDialog.RestoreDirectory = true;
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        filePath = saveFileDialog.FileName;
+                    }
+                }
+
+                if (!filePath.Equals(string.Empty))
+                {
+                    XmlSerialize.SaveToXMLFile(eventsDataBase, filePath);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool loadFromFile()
+        {
+            string filePath = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Xml files (*.xml)|*.xml|All files (*.*)|*.*";
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                }
+            }
+
+            if (!filePath.Equals(string.Empty))
+            {
+                List<EventRecord>? loadedList = XmlSerialize.LoadFromXMLFile(filePath);
+                if (loadedList is not null)
+                {
+                    eventsDataBase = loadedList;
                     return true;
                 }
             }
