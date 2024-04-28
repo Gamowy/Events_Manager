@@ -35,6 +35,7 @@ namespace EventManager.Presenters
             _eventList = _eventRepository.getAll();
             _eventBindingSource.DataSource = _eventList;
             _eventBindingSource.ResetBindings(false);
+            _view.colorizeEventList();
         }
 
         private EventRecord? readRecordFromForm()

@@ -25,6 +25,7 @@ namespace EventManager.Views
         // Methods
         public bool titleTextBoxNotEmpty();
         public void clearForm();
-        void setEventListSource(BindingSource eventList);
+        public void colorizeEventList();
+        public void setEventListSource(BindingSource eventList);
     }
 }

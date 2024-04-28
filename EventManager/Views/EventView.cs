@@ -105,7 +105,32 @@ namespace EventManager.Views
             EventDate = DateTime.Now;
             EventType = "Work";
             EventPriority = "Normal";
-        }   
+        }
+
+        public void colorizeEventList()
+        {
+            foreach (DataGridViewRow row in eventDataGrid.Rows)
+            {
+                switch (row.Cells[3].Value.ToString())
+                {
+                    case "Work":
+                        row.DefaultCellStyle.BackColor = Color.Blue;
+                        break;
+                    case "Family":
+                        row.DefaultCellStyle.BackColor = Color.Green;
+                        break;
+                    case "Entertaiment":
+                        row.DefaultCellStyle.BackColor = Color.Orange;
+                        break;
+                    case "Health":
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                        break;
+                    case "Sport":
+                        row.DefaultCellStyle.BackColor = Color.Purple;
+                        break;
+                }
+            }
+        }
 
         public bool titleTextBoxNotEmpty()
         {
