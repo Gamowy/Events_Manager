@@ -72,8 +72,8 @@ namespace EventManager.Views
             eventDataGrid.SelectionChanged += _displaySelectedEvent;
             clearFormToolStripMenuItem.Click += _clearFormEvent;
             aboutToolStripMenuItem.Click += _displayAbout;
-            sortByComboBox.SelectionChangeCommitted += sortEventList;
-            sortTypeComboBox.SelectionChangeCommitted += sortEventList;
+            sortByComboBox.SelectionChangeCommitted += _sortEvent;
+            sortTypeComboBox.SelectionChangeCommitted += _sortEvent;
         }
 
         private void _displaySelectedEvent(object? sender, EventArgs e)
@@ -101,7 +101,12 @@ namespace EventManager.Views
             MessageBox.Show("Administrator wydarzeń\nAutor: Patryk Gamrat", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void sortEventList(Object? sender, EventArgs e)
+        private void _sortEvent(object? sender, EventArgs e)
+        {
+            reloadEventList();
+        }
+
+        private void _sortEventList()
         {
             string sortBy = sortByComboBox.Text;
             var sortType = sortTypeComboBox.Text.Equals("Ascending") ? ListSortDirection.Ascending : ListSortDirection.Descending;
@@ -117,20 +122,10 @@ namespace EventManager.Views
                     eventDataGrid.Sort(eventDataGrid.Columns["Type"], sortType);
                     break;
             }
-            colorizeEventList();
         }
 
-        public void clearForm()
+        private void _colorizeEventList()
         {
-            Title = "";
-            Description = "";
-            EventDate = DateTime.Now;
-            EventType = "Work";
-            EventPriority = "Normal";
-        }
-
-        public void colorizeEventList()
-        { 
             foreach (DataGridViewRow row in eventDataGrid.Rows)
             {
                 switch (row.Cells[3].Value.ToString())
@@ -152,6 +147,21 @@ namespace EventManager.Views
                         break;
                 }
             }
+        }
+        
+        public void reloadEventList()
+        {
+            _sortEventList();
+            _colorizeEventList();
+        }
+
+        public void clearForm()
+        {
+            Title = "";
+            Description = "";
+            EventDate = DateTime.Now;
+            EventType = "Work";
+            EventPriority = "Normal";
         }
 
         public bool titleTextBoxNotEmpty()

@@ -27,7 +27,6 @@ namespace EventManager.Presenters
             _view.setEventListSource(_eventBindingSource);
 
             loadEventsList();
-            _view.clearForm();
         }
 
         // Methods
@@ -36,7 +35,8 @@ namespace EventManager.Presenters
             _eventList = _eventRepository.getAll();
             _eventBindingSource.DataSource = _eventList;
             _eventBindingSource.ResetBindings(false);
-            _view.colorizeEventList();
+            _view.reloadEventList();
+            _view.clearForm();
         }
 
         private EventRecord? readRecordFromForm()
@@ -60,7 +60,6 @@ namespace EventManager.Presenters
             {
                 _eventRepository.add(record);
                 loadEventsList();
-                _view.clearForm();
             }
         }
 
@@ -72,7 +71,6 @@ namespace EventManager.Presenters
                 if (_eventRepository.remove(record))
                 {
                     loadEventsList();
-                    _view.clearForm();
                 }
             }
         }
@@ -100,7 +98,6 @@ namespace EventManager.Presenters
             else
             {
                 loadEventsList();
-                _view.clearForm();
             }
         }
     }
