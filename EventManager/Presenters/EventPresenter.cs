@@ -1,6 +1,7 @@
 ﻿using EventManager.Models;
 using EventManager.Repositories;
 using EventManager.Views;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace EventManager.Presenters
 {
@@ -8,7 +9,7 @@ namespace EventManager.Presenters
     {
         private EventRepository _eventRepository;
         private IEventView _view;
-        private IEnumerable<EventRecord>? _eventList;
+        private SortableBindingList<EventRecord>? _eventList;
         private BindingSource _eventBindingSource;
 
         public EventPresenter(IEventView view, EventRepository reposiotry)

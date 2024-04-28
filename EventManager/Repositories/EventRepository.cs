@@ -1,4 +1,5 @@
 ﻿using EventManager.Models;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System.Reflection.Metadata.Ecma335;
 
 namespace EventManager.Repositories
@@ -22,9 +23,10 @@ namespace EventManager.Repositories
             return _instance;
         }
 
-        public IEnumerable<EventRecord> getAll()
+        public SortableBindingList<EventRecord> getAll()
         {
-            return eventsDataBase;
+            SortableBindingList<EventRecord> list = new SortableBindingList<EventRecord>(eventsDataBase);
+            return list;
         }
 
         public void RemoveAll()

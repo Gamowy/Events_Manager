@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.ComponentModel;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Windows.Forms;
 
@@ -71,6 +72,8 @@ namespace EventManager.Views
             eventDataGrid.SelectionChanged += _displaySelectedEvent;
             clearFormToolStripMenuItem.Click += _clearFormEvent;
             aboutToolStripMenuItem.Click += _displayAbout;
+            sortByComboBox.SelectionChangeCommitted += sortEventList;
+            sortTypeComboBox.SelectionChangeCommitted += sortEventList;
         }
 
         private void _displaySelectedEvent(object? sender, EventArgs e)
@@ -98,6 +101,25 @@ namespace EventManager.Views
             MessageBox.Show("Administrator wydarzeń\nAutor: Patryk Gamrat", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void sortEventList(Object? sender, EventArgs e)
+        {
+            string sortBy = sortByComboBox.Text;
+            var sortType = sortTypeComboBox.Text.Equals("Ascending") ? ListSortDirection.Ascending : ListSortDirection.Descending;
+            switch (sortBy)
+            {
+                case "Date":
+                    eventDataGrid.Sort(eventDataGrid.Columns["Date"], sortType);
+                    break;
+                case "Priority":
+                    eventDataGrid.Sort(eventDataGrid.Columns["Priority"], sortType);
+                    break;
+                case "Type":
+                    eventDataGrid.Sort(eventDataGrid.Columns["Type"], sortType);
+                    break;
+            }
+            colorizeEventList();
+        }
+
         public void clearForm()
         {
             Title = "";
@@ -108,7 +130,7 @@ namespace EventManager.Views
         }
 
         public void colorizeEventList()
-        {
+        { 
             foreach (DataGridViewRow row in eventDataGrid.Rows)
             {
                 switch (row.Cells[3].Value.ToString())
