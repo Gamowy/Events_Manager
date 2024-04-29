@@ -74,36 +74,10 @@ namespace EventManager.Views
             aboutToolStripMenuItem.Click += _displayAbout;
             sortByComboBox.SelectionChangeCommitted += _sortEvent;
             sortTypeComboBox.SelectionChangeCommitted += _sortEvent;
-        }
-
-        private void _displaySelectedEvent(object? sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in eventDataGrid.SelectedRows)
+            foreach(Control cb in showGroupBox.Controls)
             {
-                if (row.Cells[0].Value.ToString() != "")
-                {
-                    Title = row.Cells[0].Value.ToString() ?? "Event";
-                    Description = row.Cells[1].Value.ToString();
-                    EventDate = (DateTime)row.Cells[2].Value;
-                    EventType = row.Cells[3].Value.ToString();
-                    EventPriority = row.Cells[4].Value.ToString();
-                }
+                cb.Click += _reloadListEvent;
             }
-        }
-
-        private void _clearFormEvent(object? sender, EventArgs e)
-        {
-            clearForm();
-        }
-
-        private void _displayAbout(object? sender, EventArgs e)
-        {
-            MessageBox.Show("Administrator wydarzeń\nAutor: Patryk Gamrat", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void _sortEvent(object? sender, EventArgs e)
-        {
-            reloadEventList();
         }
 
         private void _sortEventList()
@@ -121,6 +95,66 @@ namespace EventManager.Views
                 case "Type":
                     eventDataGrid.Sort(eventDataGrid.Columns["Type"], sortType);
                     break;
+            }
+        }
+
+        private void _filterEventList()
+        {
+            bool workShow = showWorkCheckBox.Checked;
+            bool familyShow = showFamilyCheckBox.Checked;
+            bool entertaimentShow = showEntertaimentCheckBox.Checked;
+            bool healthShow = showHealthCheckBox.Checked;
+            bool sportShow = showSportCheckBox.Checked;
+
+            bool highShow = showHighCheckBox.Checked;
+            bool normalShow = showNormalCheckBox.Checked;
+            bool lowShow = showLowCheckBox.Checked;
+
+            eventDataGrid.CurrentCell = null;
+            foreach (DataGridViewRow row in eventDataGrid.Rows)
+            {
+                row.Visible = true;
+                string? eventType = row.Cells[3].Value.ToString();
+                string? eventPriority = row.Cells[4].Value.ToString();
+                switch (eventType)
+                {
+                    case "Work":
+                        if (!workShow)
+                            row.Visible = false;
+                        break;
+                    case "Family":
+                        if (!familyShow)
+                            row.Visible = false;
+                        break;
+                    case "Entertaiment":
+                        if (!entertaimentShow)
+                            row.Visible = false;
+                        break;
+                    case "Health":
+                        if (!healthShow)
+                            row.Visible = false;
+                        break;
+                    case "Sport":
+                        if (!sportShow)
+                            row.Visible = false;
+                        break;
+                }
+
+                switch (eventPriority)
+                {
+                    case "High":
+                        if (!highShow)
+                            row.Visible = false;
+                        break;
+                    case "Normal":
+                        if (!normalShow)
+                            row.Visible = false;
+                        break;
+                    case "Low":
+                        if (!lowShow)
+                            row.Visible = false;
+                        break;
+                }
             }
         }
 
@@ -148,10 +182,11 @@ namespace EventManager.Views
                 }
             }
         }
-        
+
         public void reloadEventList()
         {
             _sortEventList();
+            _filterEventList();
             _colorizeEventList();
         }
 
@@ -162,6 +197,19 @@ namespace EventManager.Views
             EventDate = DateTime.Now;
             EventType = "Work";
             EventPriority = "Normal";
+
+            sortByComboBox.SelectedIndex = -1;
+            sortTypeComboBox.SelectedIndex = -1;
+
+            showWorkCheckBox.Checked = true;
+            showFamilyCheckBox.Checked = true;
+            showEntertaimentCheckBox.Checked = true;
+            showHealthCheckBox.Checked = true;
+            showSportCheckBox.Checked = true;
+
+            showHighCheckBox.Checked = true;
+            showNormalCheckBox.Checked = true;
+            showLowCheckBox.Checked = true;
         }
 
         public bool titleTextBoxNotEmpty()
@@ -181,6 +229,43 @@ namespace EventManager.Views
         public void setEventListSource(BindingSource eventList)
         {
             eventDataGrid.DataSource = eventList;
+        }
+
+
+        // View-specific event handlers
+        private void _clearFormEvent(object? sender, EventArgs e)
+        {
+            clearForm();
+        }
+
+        private void _reloadListEvent(object? sender, EventArgs e)
+        {
+            reloadEventList();
+        }
+
+        private void _displayAbout(object? sender, EventArgs e)
+        {
+            MessageBox.Show("Administrator wydarzeń\nAutor: Patryk Gamrat", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void _sortEvent(object? sender, EventArgs e)
+        {
+            reloadEventList();
+        }
+
+        private void _displaySelectedEvent(object? sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in eventDataGrid.SelectedRows)
+            {
+                if (row.Cells[0].Value.ToString() != "")
+                {
+                    Title = row.Cells[0].Value.ToString() ?? "Event";
+                    Description = row.Cells[1].Value.ToString();
+                    EventDate = (DateTime)row.Cells[2].Value;
+                    EventType = row.Cells[3].Value.ToString();
+                    EventPriority = row.Cells[4].Value.ToString();
+                }
+            }
         }
     }
 }

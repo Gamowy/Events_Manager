@@ -56,10 +56,22 @@
             aboutToolStripMenuItem = new ToolStripMenuItem();
             eventDataGrid = new DataGridView();
             errorProvider = new ErrorProvider(components);
+            showGroupBox = new GroupBox();
+            showLowCheckBox = new CheckBox();
+            showNormalCheckBox = new CheckBox();
+            showHighCheckBox = new CheckBox();
+            priorLabel = new Label();
+            showSportCheckBox = new CheckBox();
+            showHealthCheckBox = new CheckBox();
+            showEntertaimentCheckBox = new CheckBox();
+            showFamilyCheckBox = new CheckBox();
+            showWorkCheckBox = new CheckBox();
+            showTypeLabel = new Label();
             eventDetails.SuspendLayout();
             topMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)eventDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
+            showGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // eventDetails
@@ -223,7 +235,7 @@
             topMenu.Items.AddRange(new ToolStripItem[] { plikToolStripMenuItem, edytujToolStripMenuItem, pomocToolStripMenuItem });
             topMenu.Location = new Point(0, 0);
             topMenu.Name = "topMenu";
-            topMenu.Size = new Size(1176, 31);
+            topMenu.Size = new Size(1376, 31);
             topMenu.TabIndex = 7;
             topMenu.Text = "menuStrip1";
             // 
@@ -237,13 +249,13 @@
             // saveFileToolStripMenuItem
             // 
             saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            saveFileToolStripMenuItem.Size = new Size(252, 30);
+            saveFileToolStripMenuItem.Size = new Size(168, 30);
             saveFileToolStripMenuItem.Text = "Save file";
             // 
             // loadFileToolStripMenuItem
             // 
             loadFileToolStripMenuItem.Name = "loadFileToolStripMenuItem";
-            loadFileToolStripMenuItem.Size = new Size(252, 30);
+            loadFileToolStripMenuItem.Size = new Size(168, 30);
             loadFileToolStripMenuItem.Text = "Load file";
             // 
             // edytujToolStripMenuItem
@@ -280,6 +292,8 @@
             // 
             // eventDataGrid
             // 
+            eventDataGrid.AllowUserToAddRows = false;
+            eventDataGrid.AllowUserToDeleteRows = false;
             eventDataGrid.AllowUserToResizeColumns = false;
             eventDataGrid.AllowUserToResizeRows = false;
             eventDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -295,12 +309,146 @@
             // 
             errorProvider.ContainerControl = this;
             // 
+            // showGroupBox
+            // 
+            showGroupBox.Controls.Add(showLowCheckBox);
+            showGroupBox.Controls.Add(showNormalCheckBox);
+            showGroupBox.Controls.Add(showHighCheckBox);
+            showGroupBox.Controls.Add(priorLabel);
+            showGroupBox.Controls.Add(showSportCheckBox);
+            showGroupBox.Controls.Add(showHealthCheckBox);
+            showGroupBox.Controls.Add(showEntertaimentCheckBox);
+            showGroupBox.Controls.Add(showFamilyCheckBox);
+            showGroupBox.Controls.Add(showWorkCheckBox);
+            showGroupBox.Controls.Add(showTypeLabel);
+            showGroupBox.Location = new Point(1185, 44);
+            showGroupBox.Name = "showGroupBox";
+            showGroupBox.Size = new Size(164, 518);
+            showGroupBox.TabIndex = 9;
+            showGroupBox.TabStop = false;
+            showGroupBox.Text = "Show";
+            // 
+            // showLowCheckBox
+            // 
+            showLowCheckBox.AutoSize = true;
+            showLowCheckBox.Checked = true;
+            showLowCheckBox.CheckState = CheckState.Checked;
+            showLowCheckBox.Location = new Point(7, 306);
+            showLowCheckBox.Name = "showLowCheckBox";
+            showLowCheckBox.Size = new Size(62, 27);
+            showLowCheckBox.TabIndex = 9;
+            showLowCheckBox.Text = "Low";
+            showLowCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // showNormalCheckBox
+            // 
+            showNormalCheckBox.AutoSize = true;
+            showNormalCheckBox.Checked = true;
+            showNormalCheckBox.CheckState = CheckState.Checked;
+            showNormalCheckBox.Location = new Point(7, 276);
+            showNormalCheckBox.Name = "showNormalCheckBox";
+            showNormalCheckBox.Size = new Size(89, 27);
+            showNormalCheckBox.TabIndex = 8;
+            showNormalCheckBox.Text = "Normal";
+            showNormalCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // showHighCheckBox
+            // 
+            showHighCheckBox.AutoSize = true;
+            showHighCheckBox.Checked = true;
+            showHighCheckBox.CheckState = CheckState.Checked;
+            showHighCheckBox.Location = new Point(7, 247);
+            showHighCheckBox.Name = "showHighCheckBox";
+            showHighCheckBox.Size = new Size(68, 27);
+            showHighCheckBox.TabIndex = 7;
+            showHighCheckBox.Text = "High";
+            showHighCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // priorLabel
+            // 
+            priorLabel.AutoSize = true;
+            priorLabel.Location = new Point(7, 221);
+            priorLabel.Name = "priorLabel";
+            priorLabel.Size = new Size(64, 23);
+            priorLabel.TabIndex = 6;
+            priorLabel.Text = "Priority";
+            // 
+            // showSportCheckBox
+            // 
+            showSportCheckBox.AutoSize = true;
+            showSportCheckBox.Checked = true;
+            showSportCheckBox.CheckState = CheckState.Checked;
+            showSportCheckBox.Location = new Point(7, 187);
+            showSportCheckBox.Name = "showSportCheckBox";
+            showSportCheckBox.Size = new Size(73, 27);
+            showSportCheckBox.TabIndex = 5;
+            showSportCheckBox.Text = "Sport";
+            showSportCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // showHealthCheckBox
+            // 
+            showHealthCheckBox.AutoSize = true;
+            showHealthCheckBox.Checked = true;
+            showHealthCheckBox.CheckState = CheckState.Checked;
+            showHealthCheckBox.Location = new Point(7, 154);
+            showHealthCheckBox.Name = "showHealthCheckBox";
+            showHealthCheckBox.Size = new Size(82, 27);
+            showHealthCheckBox.TabIndex = 4;
+            showHealthCheckBox.Text = "Health";
+            showHealthCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // showEntertaimentCheckBox
+            // 
+            showEntertaimentCheckBox.AutoSize = true;
+            showEntertaimentCheckBox.Checked = true;
+            showEntertaimentCheckBox.CheckState = CheckState.Checked;
+            showEntertaimentCheckBox.Location = new Point(7, 121);
+            showEntertaimentCheckBox.Name = "showEntertaimentCheckBox";
+            showEntertaimentCheckBox.Size = new Size(131, 27);
+            showEntertaimentCheckBox.TabIndex = 3;
+            showEntertaimentCheckBox.Text = "Entertaiment";
+            showEntertaimentCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // showFamilyCheckBox
+            // 
+            showFamilyCheckBox.AutoSize = true;
+            showFamilyCheckBox.Checked = true;
+            showFamilyCheckBox.CheckState = CheckState.Checked;
+            showFamilyCheckBox.Location = new Point(7, 91);
+            showFamilyCheckBox.Name = "showFamilyCheckBox";
+            showFamilyCheckBox.Size = new Size(79, 27);
+            showFamilyCheckBox.TabIndex = 2;
+            showFamilyCheckBox.Text = "Family";
+            showFamilyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // showWorkCheckBox
+            // 
+            showWorkCheckBox.AutoSize = true;
+            showWorkCheckBox.Checked = true;
+            showWorkCheckBox.CheckState = CheckState.Checked;
+            showWorkCheckBox.Location = new Point(7, 62);
+            showWorkCheckBox.Name = "showWorkCheckBox";
+            showWorkCheckBox.Size = new Size(71, 27);
+            showWorkCheckBox.TabIndex = 1;
+            showWorkCheckBox.Text = "Work";
+            showWorkCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // showTypeLabel
+            // 
+            showTypeLabel.AutoSize = true;
+            showTypeLabel.Location = new Point(7, 36);
+            showTypeLabel.Name = "showTypeLabel";
+            showTypeLabel.Size = new Size(45, 23);
+            showTypeLabel.TabIndex = 0;
+            showTypeLabel.Text = "Type";
+            // 
             // EventView
             // 
             AcceptButton = addButton;
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1176, 574);
+            ClientSize = new Size(1376, 574);
+            Controls.Add(showGroupBox);
             Controls.Add(eventDataGrid);
             Controls.Add(sortTypeComboBox);
             Controls.Add(sortByComboBox);
@@ -310,7 +458,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MainMenuStrip = topMenu;
             MaximizeBox = false;
-            MaximumSize = new Size(1200, 630);
+            MaximumSize = new Size(1400, 630);
             Name = "EventView";
             Text = "Events manager";
             eventDetails.ResumeLayout(false);
@@ -319,6 +467,8 @@
             topMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)eventDataGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
+            showGroupBox.ResumeLayout(false);
+            showGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -351,5 +501,16 @@
         private ComboBox evPriorityComboBox;
         private DataGridView eventDataGrid;
         private ErrorProvider errorProvider;
+        private GroupBox showGroupBox;
+        private CheckBox showWorkCheckBox;
+        private Label showTypeLabel;
+        private CheckBox showFamilyCheckBox;
+        private CheckBox showHealthCheckBox;
+        private CheckBox showEntertaimentCheckBox;
+        private CheckBox showSportCheckBox;
+        private Label priorLabel;
+        private CheckBox showLowCheckBox;
+        private CheckBox showNormalCheckBox;
+        private CheckBox showHighCheckBox;
     }
 }
