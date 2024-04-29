@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventView));
             eventDetails = new GroupBox();
             evPriorityComboBox = new ComboBox();
             priorityLabel = new Label();
@@ -447,6 +448,7 @@
             AcceptButton = addButton;
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DarkGray;
             ClientSize = new Size(1376, 574);
             Controls.Add(showGroupBox);
             Controls.Add(eventDataGrid);
@@ -456,6 +458,7 @@
             Controls.Add(eventDetails);
             Controls.Add(topMenu);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = topMenu;
             MaximizeBox = false;
             MaximumSize = new Size(1400, 630);
