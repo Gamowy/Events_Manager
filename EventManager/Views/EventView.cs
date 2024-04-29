@@ -96,6 +96,11 @@ namespace EventManager.Views
                     eventDataGrid.Sort(eventDataGrid.Columns["Type"], sortType);
                     break;
             }
+            // Disable default datagrid sorting
+            foreach (DataGridViewColumn column in eventDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         private void _filterEventList()
@@ -165,19 +170,19 @@ namespace EventManager.Views
                 switch (row.Cells[3].Value.ToString())
                 {
                     case "Work":
-                        row.DefaultCellStyle.BackColor = Color.Blue;
+                        row.DefaultCellStyle.BackColor = Color.LightBlue;
                         break;
                     case "Family":
-                        row.DefaultCellStyle.BackColor = Color.Green;
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
                         break;
                     case "Entertaiment":
                         row.DefaultCellStyle.BackColor = Color.Orange;
                         break;
                     case "Health":
-                        row.DefaultCellStyle.BackColor = Color.Red;
+                        row.DefaultCellStyle.BackColor = Color.LightPink;
                         break;
                     case "Sport":
-                        row.DefaultCellStyle.BackColor = Color.Purple;
+                        row.DefaultCellStyle.BackColor = Color.LightYellow;
                         break;
                 }
             }
