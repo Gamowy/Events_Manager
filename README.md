@@ -1,1 +1,1 @@
-Prosty administrator wydarzeń stworzony za pomocą WinForms.
+# Prosty administrator wydarzeń stworzony za pomocą WinForms.
